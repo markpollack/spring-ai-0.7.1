@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AI Concepts :: Spring AI Reference</title>
+    <link rel="prev" href="index.html">
+    <link rel="next" href="getting-started.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.2">
+    <script>
+!function (theme, navWidth) {
+  if (theme === 'dark') document.documentElement.classList.add('dark-theme')
+  if (navWidth) document.documentElement.style.setProperty('--nav-width', `${navWidth}px`)
+}(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)') && 'dark'),
+  localStorage && localStorage.getItem('nav-width'))
+    </script>
+    <link rel="stylesheet" href="./_/css/site.css">
+    <link rel="stylesheet" href="./_/css/vendor/search.css">
+    <link rel="stylesheet" href="./_/css/vendor/asciidoctor-tabs.css">
+
+    <meta name="version" content="0.7.1">
+    <meta name="component" content="ai">
+    <link rel="icon" href="./_/img/favicon.ico" type="image/vnd.microsoft.icon">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://spring.io">
+        <img
+          id="springlogo"
+          class="block"
+          src="./_/img/spring-logo.svg"
+          alt="Spring"
+        />
+      </a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Why Spring</a>
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              href="https://spring.io/why-spring"
+            >Overview</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/microservices"
+            >Microservices</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/reactive"
+            >Reactive</a>
+            <a class="navbar-item" href="https://spring.io/event-driven">Event
+              Driven</a>
+            <a class="navbar-item" href="https://spring.io/cloud">Cloud</a>
+            <a class="navbar-item" href="https://spring.io/web-applications">Web
+              Applications</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/serverless"
+            >Serverless</a>
+            <a class="navbar-item" href="https://spring.io/batch">Batch</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Learn</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://spring.io/learn">Overview</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/quickstart"
+            >Quickstart</a>
+            <a class="navbar-item" href="https://spring.io/guides">Guides</a>
+            <a class="navbar-item" href="https://spring.io/blog">Blog</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Projects</a>
+          <div class="navbar-dropdown" style="min-width: 280px">
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects"
+            >Overview</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-boot"
+            >Spring Boot</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-framework"
+            >Spring Framework</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-cloud"
+            >Spring Cloud</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-cloud-dataflow"
+            >Spring Cloud Data Flow</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-data"
+            >Spring Data</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-integration"
+            >Spring Integration</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-batch"
+            >Spring Batch</a>
+            <a
+              class="navbar-item"
+              href="https://spring.io/projects/spring-security"
+            >Spring Security</a>
+            <a
+              class="navbar-item navbar-item-special"
+              href="https://spring.io/projects"
+            >View all projects</a>
+            <a class="navbar-item" href="https://spring.io/tools">Spring Tools 4</a>
+            <a
+              class="navbar-item navbar-item-special-2"
+              href="https://start.spring.io"
+            >Spring Initializr
+              <svg
+                class="external-link-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+              ><polyline
+                  points="15 10.94 15 15 1 15 1 1 5.06 1"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                ></polyline><polyline
+                  points="8.93 1 15 1 15 7.07"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                ></polyline><line
+                  x1="15"
+                  y1="1"
+                  x2="8"
+                  y2="8"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"
+                  stroke-width="2"
+                ></line></svg></a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Academy</a>
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              href="https://spring.academy/courses"
+            >Courses</a>
+            <a
+              class="navbar-item"
+              href="https://spring.academy/learning-path"
+            >Get Certified</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Solutions</a>
+          <div class="navbar-dropdown lg">
+            <a class="navbar-item" href="https://spring.io/solutions">Overview</a>
+            <a class="navbar-item" href="https://spring.io/runtime">Spring Runtime</a>
+            <a class="navbar-item" href="https://spring.io/consulting">Spring Consulting</a>
+            <a class="navbar-item" href="https://spring.academy/teams">Spring Academy For Teams</a>
+            <a class="navbar-item" href="https://spring.io/security">Security Advisories</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable is-community">
+          <a class="navbar-link" href="#">Community</a>
+          <div class="navbar-dropdown">
+            <a
+              class="navbar-item"
+              href="https://spring.io/community"
+            >Overview</a>
+            <a class="navbar-item" href="https://spring.io/events">Events</a>
+            <a class="navbar-item" href="https://spring.io/team">Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <label class="theme-toggler">
+      <input
+        type="checkbox"
+        type="checkbox"
+        id="switch-theme-checkbox"
+        name="switch-theme-checkbox"
+      />
+      <span class="icon"><svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="moon"
+          class="svg-inline--fa fa-moon moon"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512"
+        ><path
+            fill="currentColor"
+            d="M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z"
+          ></path>
+        </svg>
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="fas"
+          data-icon="sun"
+          class="svg-inline--fa fa-sun sun"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        ><path
+            fill="currentColor"
+            d="M361.5 1.2c5 2.1 8.6 6.6 9.6 11.9L391 121l107.9 19.8c5.3 1 9.8 4.6 11.9 9.6s1.5 10.7-1.6 15.2L446.9 256l62.3 90.3c3.1 4.5 3.7 10.2 1.6 15.2s-6.6 8.6-11.9 9.6L391 391 371.1 498.9c-1 5.3-4.6 9.8-9.6 11.9s-10.7 1.5-15.2-1.6L256 446.9l-90.3 62.3c-4.5 3.1-10.2 3.7-15.2 1.6s-8.6-6.6-9.6-11.9L121 391 13.1 371.1c-5.3-1-9.8-4.6-11.9-9.6s-1.5-10.7 1.6-15.2L65.1 256 2.8 165.7c-3.1-4.5-3.7-10.2-1.6-15.2s6.6-8.6 11.9-9.6L121 121 140.9 13.1c1-5.3 4.6-9.8 9.6-11.9s10.7-1.5 15.2 1.6L256 65.1 346.3 2.8c4.5-3.1 10.2-3.7 15.2-1.6zM160 256a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zm224 0a128 128 0 1 0 -256 0 128 128 0 1 0 256 0z"
+          ></path>
+        </svg></span>
+      <span class="text">light</span>
+    </label>
+  </nav>
+</header>
+<script>
+!function (theme) {
+  if (theme === 'dark') {
+    document.getElementById('switch-theme-checkbox').parentElement.classList.add('active')
+  }
+}(localStorage && localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: dark)') && 'dark'))
+</script><div class="body">
+<div class="nav-container" data-component="ai" data-version="0.7.1">
+  <aside class="nav">
+    <div class="panels">
+      <div class="nav-panel-menu is-active" data-panel="menu">
+        <nav class="nav-menu">
+<div class="context">
+  <span class="title">Spring AI</span>
+  <span class="version">0.7.1-SNAPSHOT</span>
+  <button class="browse-version" id="browse-version">
+    <svg
+      height="24px"
+      id="Layer_1"
+      style="enable-background:new 0 0 512 512;"
+      version="1.1"
+      viewBox="0 0 512 512"
+      width="24px"
+      xml:space="preserve"
+    ><g><path
+          d="M256,224c-17.7,0-32,14.3-32,32s14.3,32,32,32c17.7,0,32-14.3,32-32S273.7,224,256,224L256,224z"
+        ></path><path
+          d="M128.4,224c-17.7,0-32,14.3-32,32s14.3,32,32,32c17.7,0,32-14.3,32-32S146,224,128.4,224L128.4,224z"
+        ></path><path
+          d="M384,224c-17.7,0-32,14.3-32,32s14.3,32,32,32s32-14.3,32-32S401.7,224,384,224L384,224z"
+        ></path></g></svg>
+  </button>
+</div><ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Overview</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="concepts.html">AI Concepts</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="getting-started.html">Getting Started</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="api/index.html">Spring AI API</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="api/aiclient.html">AiClient</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api/clients/huggingface.html">HuggingFace</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="api/prompt.html">Prompts</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="api/output-parser.html">Output Parsers</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="api/etl-pipeline.html">ETL Pipeline</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="api/embeddings.html">EmbeddingClient</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api/embeddings/onnx.html">ONNX</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="api/vectordbs.html">Vector Databases</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api/vectordbs/azure.html">Azure AI Service</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api/vectordbs/chroma.html">Chroma</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api/vectordbs/milvus.html">Milvus</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api/vectordbs/neo4j.html">Neo4j</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api/vectordbs/pgvector.html">PGvector</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="api/vectordbs/weaviate.html">Weaviate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="api/testing.html">Evaluation Testing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Appendices</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="glossary.html">Glossary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+          <div class="toggle-sm">
+            <button id="nav-toggle-2" class="nav-toggle"></button>
+          </div>
+        </nav>
+      </div>
+      <div class="nav-collapse">
+        <button id="nav-collapse-toggle"><span></span></button>        
+      </div>
+    </div>
+    <div class="nav-resize"></div>
+  </aside>
+</div>
+<script>
+!function (sidebar) {
+  if (sidebar) {
+    document.body.classList.add('nav-sm')
+  }
+}(localStorage && localStorage.getItem('sidebar') === 'close')
+</script><main class="article">
+<div class="toolbar" role="navigation">
+  <button id="nav-toggle-1" class="nav-toggle"></button>
+</div>
+  <div class="content">
+<aside class="sidebar">
+  <div class="content">
+    <div
+      class="toc"
+      data-title="AI Concepts"
+      data-levels="2"
+    >
+      <div class="toc-menu"></div>
+    </div>
+    <div class="sidebar-links">
+        <a href="file:///home/mark/projects/spring-ai/spring-ai-docs/src/main/antora/modules/ROOT/pages/concepts.adoc">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+          ><path
+              d="m16 2.012 3 3L16.713 7.3l-3-3zM4 14v3h3l8.299-8.287-3-3zm0 6h16v2H4z"
+            ></path></svg>
+          Edit this Page
+        </a>
+        <a href="https://github.com/markpollack/spring-ai" title="Github">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="512px"
+            id="Layer_1"
+            version="1.1"
+            viewBox="0 0 512 512"
+            width="512px"
+          ><style type="text/css"><![CDATA[
+              .st0{fill-rule:evenodd;clip-rule:evenodd;} ]]></style><g><path
+                class="st0"
+                d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"
+              ></path></g></svg>
+          Github Project
+        </a>
+    </div>
+  </div>
+</aside><div class="doc">
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Spring AI</a></li>
+    <li><a href="concepts.html">AI Concepts</a></li>
+  </ul>
+</nav>
+<article>
+<h1 id="page-title" class="page">AI Concepts</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes core concepts that Spring AI uses. We recommend reading it closely to understand the ideas behind how Spring AI is implemented.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_models"><a class="anchor" href="#_models"></a>Models</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AI models are algorithms designed to process and generate information, often mimicking human cognitive functions.
+By learning patterns and insights from large datasets, these models can make predictions, text, images, or other outputs, enhancing various applications across industries.</p>
+</div>
+<div class="paragraph">
+<p>There are many different types of AI models, each suited for a specific use case.
+While ChatGPT and its generative AI capabilities have captivated users through text input and output, many models and companies offer diverse inputs and outputs.
+Before ChatGPT, many people were fascinated by text-to-image generation models such as Midjourney and Stable Diffusion.</p>
+</div>
+<div class="paragraph">
+<p>The following table categorizes several models based on their input and output types:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Input</th>
+<th class="tableblock halign-left valign-top">Output</th>
+<th class="tableblock halign-left valign-top">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Language/Code/Images (Multi-Modal)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Language/Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GPT4 - OpenAI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Language/Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Language/Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GPT 3.5 - OpenAI-Azure OpenAI, Google Bard, Meta Llama</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Language</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dall-E - OpenAI + Azure, Deep AI</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Language/Image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Midjourney, Stable Diffusion, RunwayML</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Numbers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Many (AKA embeddings)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The initial focus of Spring AI is on models that process language input and provide language output, initially OpenAI + Azure OpenAI.
+The last row in the previous table, which accepts text as input and output numbers, is more commonly known as embedding text and represents the internal data structures used in an AI model.
+Spring AI has support for embeddings to support more advanced use cases.</p>
+</div>
+<div class="paragraph">
+<p>What sets models like GPT apart is their pre-trained nature, as indicated by the "P" in GPT—Chat Generative Pre-Trained Transformer.
+This pre-training feature transforms AI into a general developer tool that does not require an extensive machine learning or model training background.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prompts"><a class="anchor" href="#_prompts"></a>Prompts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Prompts serve as the foundation for the language-based inputs that guide an AI model to produce specific outputs.
+For those familiar with ChatGPT, a prompt might seem like merely the text entered into a dialog box that is sent to the API.
+However, it encompasses much more than that.
+In many AI Models, the text for the prompt is not just a simple string.</p>
+</div>
+<div class="paragraph">
+<p>ChatGPT&#8217;s API has multiple text inputs within a prompt, with each text input being assigned a role.
+For example, there is the system role, which tells the model how to behave and sets the context for the interaction.
+There is also the user role, which is typically the input from the user.</p>
+</div>
+<div class="paragraph">
+<p>Crafting effective prompts is both an art and a science.
+ChatGPT was designed for human conversations.
+This is quite a departure from using something like SQL to "'ask a question.'"
+One must communicate with the AI model akin to conversing with another person.</p>
+</div>
+<div class="paragraph">
+<p>Such is the importance of this interaction style that the term "Prompt Engineering" has emerged as its own discipline.
+There is a burgeoning collection of techniques that improve the effectiveness of prompts.
+Investing time in crafting a prompt can drastically improve the resulting output.</p>
+</div>
+<div class="paragraph">
+<p>Sharing prompts has become a communal practice, and there is active academic research being done on this subject.
+As an example of how counter-intuitive it can be to create an effective prompt (for example, contrasting with SQL), a <a href="https://arxiv.org/abs/2205.11916">recent research paper</a> found that one of the most effective prompts you can use starts with the phrase, &#8220;Take a deep breath and work on this step by step.&#8221;
+That should give you an indication of why language is so important.
+We do not yet fully understand how to make the most effective use of previous iterations of this technology, such as ChatGPT 3.5, let alone new versions that are being developed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prompt_templates"><a class="anchor" href="#_prompt_templates"></a>Prompt Templates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Creating effective prompts involves establishing the context of the request and substituting parts of the request with values specific to the user&#8217;s input.</p>
+</div>
+<div class="paragraph">
+<p>This process uses traditional text-based template engines for prompt creation and management.
+Spring AI employs the OSS library, StringTemplate, for this purpose.</p>
+</div>
+<div class="paragraph">
+<p>For instance, consider the simple prompt template:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">Tell me a {adjective} joke about {content}.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In Spring AI, prompt templates can be likened to the "'View'" in Spring MVC architecture.
+A model object, typically a <code>java.util.Map</code>, is provided to populate placeholders within the template.
+The "'rendered'" string becomes the content of the prompt supplied to the AI model.</p>
+</div>
+<div class="paragraph">
+<p>There is considerable variability in the specific data format of the prompt sent to the model.
+Initially starting as simple strings, prompts have evolved to include multiple messages, where each string in each message represents a distinct role for the model.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_embeddings"><a class="anchor" href="#_embeddings"></a>Embeddings</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Embeddings transform text into numerical arrays or vectors, enabling AI models to process and interpret language data.
+This transformation from text to numbers and back is a key element in how AI interacts with and understands human language.
+As a Java developer exploring AI, it&#8217;s not necessary to comprehend the intricate mathematical theories or the specific implementations behind these vector representations.
+A basic understanding of their role and function within AI systems suffices, particularly when you&#8217;re integrating AI functionalities into your applications.</p>
+</div>
+<div class="paragraph">
+<p>Embeddings are particularly relevant in practical applications like the retrieval-augmented generation pattern.
+They enable the representation of data as points in a semantic space, which is akin to the 2-D space of Euclidean geometry, but in higher dimensions.
+This means just like how points on a plane in Euclidean geometry can be close or far based on their coordinates, in a semantic space, the proximity of points reflects the similarity in meaning.
+So, sentences about similar topics are positioned closer in this multi-dimensional space, much like points lying close to each other on a graph.
+This proximity aids in tasks like text classification, semantic search, and even product recommendations, as it allows the AI to discern and group related concepts based on their 'location' in this expanded semantic landscape.</p>
+</div>
+<div class="paragraph">
+<p>You can think of this semantic space as a vector,</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tokens"><a class="anchor" href="#_tokens"></a>Tokens</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Tokens serve as the building blocks of how an AI model works.
+On input, models convert words to tokens. On output, they convert tokens back to words.</p>
+</div>
+<div class="paragraph">
+<p>In English, one token roughly corresponds to 75% of a word. For reference, Shakespeare&#8217;s complete works, totaling around 900,000 words, translates to approximately 1.2 million tokens.</p>
+</div>
+<div class="paragraph">
+<p>Perhaps more important is that Tokens = <strong><code>$</code></strong>.</p>
+</div>
+<div class="paragraph">
+<p>In the context of hosted AI models, your charges are determined by the number of tokens used. Both input and output contribute to the overall token count.</p>
+</div>
+<div class="paragraph">
+<p>Also, models are subject to token limits, which restrict the amount of text processed in a single API call.
+This threshold is often referred to as the 'context window'. The model does not process any text that exceeds this limit.</p>
+</div>
+<div class="paragraph">
+<p>For instance, ChatGPT3 has a 4K token limit, while GPT4 offers varying options, such as 8K, 16K, and 32K.
+Anthropic&#8217;s Claude AI model features a 100K token limit, and Meta&#8217;s recent research yielded a 1M token limit model.</p>
+</div>
+<div class="paragraph">
+<p>To summarize the collected works of Shakespeare with GPT4, you need to devise software engineering strategies to chop up the data and present the data within the model&#8217;s context window limits.
+The Spring AI project helps you with this task.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_output_parsing"><a class="anchor" href="#_output_parsing"></a>Output Parsing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The output of AI models traditionally arrives as a <code>java.util.String</code>, even if you ask for the reply to be in JSON.
+It may be the correct JSON, but it is not a JSON data structure. It is just a string.
+Also, asking &#8220;for JSON&#8221; as part of the prompt is not 100% accurate.</p>
+</div>
+<div class="paragraph">
+<p>This intricacy has led to the emergence of a specialized field involving the creation of prompts to yield the intended output, followed by parsing the resulting simple string into a usable data structure for application integration.</p>
+</div>
+<div class="paragraph">
+<p>Output parsing employs meticulously crafted prompts, often necessitating multiple interactions with the model to achieve the desired formatting.</p>
+</div>
+<div class="paragraph">
+<p>This challenge has prompted OpenAI to introduce 'OpenAI Functions' as a means to specify the desired output format from the model precisely.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bringing_your_data_to_the_ai_model"><a class="anchor" href="#_bringing_your_data_to_the_ai_model"></a>Bringing Your Data to the AI model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>How can you equip the AI model with information on which it has not been trained?</p>
+</div>
+<div class="paragraph">
+<p>Note that the GPT 3.5/4.0 dataset extends only until September 2021.
+Consequently, the model says that it does not know the answer to questions that require knowledge beyond that date.
+An interesting bit of trivia is that this dataset is around 650GB.</p>
+</div>
+<div class="paragraph">
+<p>Two techniques exist for customizing the AI model to incorporate your data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Fine Tuning: This traditional machine learning technique involves tailoring the model and changing its internal weighting.
+However, it is a challenging process for machine learning experts and extremely resource-intensive for models like GPT due to their size. Additionally, some models might not offer this option.</p>
+</li>
+<li>
+<p>Prompt Stuffing: A more practical alternative involves embedding your data within the prompt provided to the model. Given a model&#8217;s token limits, techniques are required to present relevant data within the model&#8217;s context window.
+This approach is colloquially referred to as "'stuffing the prompt.'"</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Spring AI library helps you implement solutions based on the "'stuffing the prompt'" technique otherwise known as Retrieval Augmented Generation (RAG).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="concept-rag"><a class="anchor" href="#concept-rag"></a>Retrieval Augmented Generation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A technique termed Retrieval Augmented Generation (RAG) has emerged to address the challenge of incorporating relevant data into prompts for accurate AI model responses.</p>
+</div>
+<div class="paragraph">
+<p>The approach involves a batch processing style programming model, where the job reads unstructured data from your documents, transforms it, and then writes it into a vector database.
+At a high level, this is an ETL (Extract, Transform and Load) pipeline.
+The vector database is used in the retrieval part of RAG technique.</p>
+</div>
+<div class="paragraph">
+<p>As part of loading the unstructured data into the vector database, one of the most important transformations is to split up the original document into smaller pieces.
+The procedure of splitting up the original document into smaller pieces has two important steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Split up the document into parts while preserving the semantic boundaries of the content.
+For example, for a document with paragraphs and tables, one should avoid splitting the document in the middle of a paragraph or table.
+For code, avoid splitting the code in the middle of a method&#8217;s implementation.</p>
+</li>
+<li>
+<p>Split up the document&#8217;s parts further into parts whose size is a small percentage of the AI Model&#8217;s token limit.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The next phase in RAG is processing user input.
+When a user&#8217;s question is to be answered by an AI model, the question and all the "'similar'" document pieces are placed into the prompt that is sent to the AI model.
+This is the reason to use a vector database. It is very good at finding 'similar' content.</p>
+</div>
+<div class="paragraph">
+<p>There are several concepts that are used in implementing RAG.
+The concepts map onto classes in Spring AI:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DocumentReader</code>: A Java functional interface that is responsible for loading a <code>List&lt;Document&gt;</code> from a data source. Common data sources are PDF, Markdown, and JSON.</p>
+</li>
+<li>
+<p><code>Document</code>: A text-based representation of your data source that also contains metadata to describe the contents.</p>
+</li>
+<li>
+<p><code>DocumentTransformer</code>: Responsible for processing the data in various ways (for example, splitting up documents into smaller pieces or adding additional metadata to the <code>Document</code>.)</p>
+</li>
+<li>
+<p><code>DocumentWriter</code>: Lets you persist the Documents into a database (most commonly in the AI stack, a vector database).</p>
+</li>
+<li>
+<p><code>Embedding</code>: A representation of your data as a <code>List&lt;Double&gt;</code> that is used by the vector database to compute the "'similarity'" of a user&#8217;s query to relevant documents.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_evaluating_ai_responses"><a class="anchor" href="#_evaluating_ai_responses"></a>Evaluating AI responses</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Effectively evaluating the output of an AI system in response to user requests is very important to ensuring the accuracy and usefulness of the final application.
+Several emerging techniques enable the use of the pre-trained model itself for this purpose.</p>
+</div>
+<div class="paragraph">
+<p>This evaluation process involves analyzing whether the generated response aligns with the user&#8217;s intent and the context of the query. Metrics such as relevance, coherence, and factual correctness are used to gauge the quality of the AI-generated response.</p>
+</div>
+<div class="paragraph">
+<p>One approach involves presenting both the user&#8217;s request and the AI model&#8217;s response to the model, querying whether the response aligns with the provided data.</p>
+</div>
+<div class="paragraph">
+<p>Furthermore, leveraging the information stored in the vector database as supplementary data can enhance the evaluation process, aiding in the determination of response relevance.</p>
+</div>
+<div class="paragraph">
+<p>The Spring AI project currently provides some very basic examples of how you can evaluate the responses in the form of prompts to include in a JUnit test.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="index.html">Overview</a></span>
+  <span class="next"><a href="getting-started.html">Getting Started</a></span>
+</nav>
+</article>
+</div>  </div>
+</main>
+<div class="modal micromodal-slide" id="modal-versions" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true">
+            <main class="modal__content" id="modal-versions-content">
+              <button data-micromodal-close class="modal-versions-close">
+                <svg width="28px" height="28px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><defs><style>.cls-1h{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><g id="cross"><line class="cls-1h" x1="7" x2="25" y1="7" y2="25"/><line class="cls-1h" x1="7" x2="25" y1="25" y2="7"/></g></svg>
+              </button>
+              <div class="colset">
+                <div class="col-left">
+                  <ul class="nav-versions">
+                    <li class="component is-current">
+                      <a class="title" href="index.html">Spring AI</a>
+                      <ul class="versions">
+                        <li class="version is-current is-latest">
+                          <a href="index.html">
+                            0.7.1-SNAPSHOT<span class="current">current</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-right">
+                  <ul>
+                    <li>
+                      Related Spring Documentation
+                      <ul>
+                        <li><a href="https://docs.spring.io/spring-framework/reference/">Spring Framework</a></li>
+                        <li>
+                          Spring Data
+                          <ul>
+                            <li><a href="https://docs.spring.io/spring-data-commons/reference/">Spring Data Commons</a></li>
+                            <li><a href="https://docs.spring.io/spring-data-jpa/reference/">Spring Data JPA</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="https://docs.spring.io/spring-integration/reference/">Spring Integration</a></li>
+                        <li><a href="https://docs.spring.io/spring-batch/reference/">Spring Batch</a></li>
+                        <li>
+                          <a href="https://docs.spring.io/spring-security/reference/">Spring Security</a>
+                          <ul>
+                            <li><a href="https://docs.spring.io/spring-ldap/reference/">Spring LDAP</a></li>
+                            <li><a href="https://docs.spring.io/spring-session/reference/">Spring Session</a></li>
+                            <li><a href="https://docs.spring.io/spring-authorization-server/reference/">Spring Authorization Server</a></li>
+                            <li><a href="https://docs.spring.io/spring-vault/reference/">Spring Vault</a></li>
+                            <li><a href="https://docs.spring.io/spring-security-kerberos/reference/">Spring Security Kerberos</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="https://docs.spring.io/spring-ai/reference/">Spring AI</a></li>
+                        <li><a href="https://docs.spring.io/spring-cli/reference/">Spring CLI</a></li>
+                        <li><a href="https://docs.spring.io/spring-graphql/reference/">Spring GraphQL</a></li>
+                        <li><a href="https://docs.spring.io/spring-shell/reference/">Spring Shell</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </main>
+        </div>
+    </div>
+</div>
+
+</div>
+<footer class="footer flex">
+    <div id="spring-links flex">
+        <img id="springlogo" src="./_/img/spring-logo.svg" alt="Spring">
+        <p class="smallest antialiased">© <script>var d = new Date();
+        document.write(d.getFullYear());</script> <a href="https://www.vmware.com/">VMware</a>, Inc. or its affiliates. <a href="https://www.vmware.com/help/legal.html">Terms of Use</a> • <a href="https://www.vmware.com/help/privacy.html" rel="noopener noreferrer">Privacy</a> • <a href="https://spring.io/trademarks">Trademark Guidelines</a> <span id="thank-you-mobile">• <a href="https://spring.io/thank-you">Thank you</a></span> • <a href="https://www.vmware.com/help/privacy/california-privacy-rights.html">Your California Privacy Rights</a> • <a class="ot-sdk-show-settings">Cookie Settings</a> <span id="teconsent"></span></p>
+        <p class="smallest antialiased has-gray-text">Apache®, Apache Tomcat®, Apache Kafka®, Apache Cassandra&trade;, and Apache Geode&trade; are trademarks or registered trademarks of the Apache Software Foundation in the United States and/or other countries. Java&trade;, Java&trade; SE, Java&trade; EE, and OpenJDK&trade; are trademarks of Oracle and/or its affiliates. Kubernetes® is a registered trademark of the Linux Foundation in the United States and other countries. Linux® is the registered trademark of Linus Torvalds in the United States and other countries. Windows® and Microsoft® Azure are registered trademarks of Microsoft Corporation. “AWS” and “Amazon Web Services” are trademarks or registered trademarks of Amazon.com Inc. or its affiliates. All other trademarks and copyrights are property of their respective owners and are only mentioned for informative purposes. Other names may be trademarks of their respective owners.</p>
+    </div>
+    <div id="social-icons" class="flex jc-between">
+        <a href="https://www.youtube.com/user/SpringSourceDev" title="Youtube"><svg id="youtube-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle class="cls-1" cx="20" cy="20" r="20"/><path class="cls-2" d="M30.91,14.53a2.89,2.89,0,0,0-2-2C27.12,12,20,12,20,12s-7.12,0-8.9.47a2.9,2.9,0,0,0-2,2A30.56,30.56,0,0,0,8.63,20a30.44,30.44,0,0,0,.46,5.47,2.89,2.89,0,0,0,2,2C12.9,28,20,28,20,28s7.12,0,8.9-.47a2.87,2.87,0,0,0,2-2A30.56,30.56,0,0,0,31.37,20,28.88,28.88,0,0,0,30.91,14.53ZM17.73,23.41V16.59L23.65,20Z"/></svg></a>
+        <a href="https://github.com/spring-projects" title="Github"><svg id="github-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.93 75.93"><path class="cls-1" d="M38,0a38,38,0,1,0,38,38A38,38,0,0,0,38,0Z"/></g><path class="cls-2" d="M38,15.59A22.95,22.95,0,0,0,30.71,60.3c1.15.21,1.57-.5,1.57-1.11s0-2,0-3.9c-6.38,1.39-7.73-3.07-7.73-3.07A6.09,6.09,0,0,0,22,48.86c-2.09-1.42.15-1.39.15-1.39a4.81,4.81,0,0,1,3.52,2.36c2,3.5,5.37,2.49,6.67,1.91a4.87,4.87,0,0,1,1.46-3.07c-5.09-.58-10.45-2.55-10.45-11.34a8.84,8.84,0,0,1,2.36-6.15,8.29,8.29,0,0,1,.23-6.07s1.92-.62,6.3,2.35a21.82,21.82,0,0,1,11.49,0c4.38-3,6.3-2.35,6.3-2.35a8.29,8.29,0,0,1,.23,6.07,8.84,8.84,0,0,1,2.36,6.15c0,8.81-5.37,10.75-10.48,11.32a5.46,5.46,0,0,1,1.56,4.25c0,3.07,0,5.54,0,6.29s.42,1.33,1.58,1.1A22.94,22.94,0,0,0,38,15.59Z"/></svg></a>
+        <a href="https://twitter.com/springcentral" title="Twitter"><svg id="twitter-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.93 75.93"><circle class="cls-1" cx="37.97" cy="37.97" r="37.97"/><path id="Twitter-2" data-name="Twitter" class="cls-2" d="M55.2,22.73a15.43,15.43,0,0,1-4.88,1.91,7.56,7.56,0,0,0-5.61-2.49A7.78,7.78,0,0,0,37,30a7.56,7.56,0,0,0,.2,1.79,21.63,21.63,0,0,1-15.84-8.23,8,8,0,0,0,2.37,10.52,7.66,7.66,0,0,1-3.48-1v.09A7.84,7.84,0,0,0,26.45,41a7.54,7.54,0,0,1-2,.28A7.64,7.64,0,0,1,23,41.09a7.71,7.71,0,0,0,7.18,5.47,15.21,15.21,0,0,1-9.55,3.37,15.78,15.78,0,0,1-1.83-.11,21.41,21.41,0,0,0,11.78,3.54c14.13,0,21.86-12,21.86-22.42,0-.34,0-.68,0-1a15.67,15.67,0,0,0,3.83-4.08,14.9,14.9,0,0,1-4.41,1.24A7.8,7.8,0,0,0,55.2,22.73Z"/></svg></a>
+    </div>
+</footer>
+<script src="./_/js/vendor/import.js"></script>
+<script src="./_/js/site.js"></script>
+<script async src="./_/js/vendor/highlight.js"></script>
+<script async src="./_/js/vendor/asciidoctor-tabs.js" data-sync-storage-key="docs:preferred-tab"></script>
+  </body>
+</html>
